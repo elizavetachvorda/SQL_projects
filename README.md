@@ -2,24 +2,22 @@
 
 
 ## Introduction
-
-
 This bike-share analysis case study aims to practice the skills I gained in the Google Data Analytics Professional Certificate and to showcase my eagerness and ability to work in this position.
-Scenario
+## Scenario
 I am a junior data analyst working at SunCycle, a bike-share company in San Francisco. The Director of Marketing believes that San Francisco has great potential for a large number of people to switch to bicycles and enjoy the true beauty of the city outdoors. Therefore, our analyst team aims to understand who currently favors bicycles and how we can reach a broader audience. Using these insights, our team will design a new marketing strategy to make the service more comfortable and user-friendly for both citizens and visitors, enabling more people to benefit from it.
-Ask
+## Ask
 Objective: Design marketing strategies to reach a broader audience.
 Guiding Questions for Analysis:
 What is the most popular membership type?
 How do annual/monthly members and casual riders utilize SunCycle bikes differently based on season, day of the week, and time of day?
 Are bikes consistently available for daily use? Are there stations that may require additional docking points or new stations in proximity?
 
-Prepare 
+## Prepare 
 The data used in this analysis originates from the San Francisco Ford GoBike Share datasets hosted on Google BigQuery. The dataset spans the years 2013 to 2018 and includes trip details such as trip id, start time, end time, trip duration, start station, end station, and latitude/longitude coordinates, capacity for each station. This comprehensive dataset, collected by SunCycle, provides insights into various aspects of cyclist behavior.
 To facilitate analysis, the data was initially organized as separate files and saved in CSV format. In the BigQuery console, I queried two specific files, namely 'bikeshare_trips' and 'bikeshare_station_info.' These datasets were then joined, and the consolidated information was downloaded as a CSV file and stored locally on my PC.
-Process 
+## Process 
 IIn the BigQuery console, the dataset turned out to be enormous, prompting the need for proper sorting and filtering to facilitate further analysis.
-Table: bikeshare_trips
+### Table: bikeshare_trips
 I selected columns deemed useful for the analysis.
 Changed the data type of the 'duration_sec' column, converting it to minutes and rounding numeric values to 2 decimals.
 Joined two columns, 'subscriber_type' and 'c_subscription_type,' which were occasionally interchanging.
@@ -77,7 +75,7 @@ start_station_longitude: The longitude of the start station;
 end_station_latitude: The latitude of the start station;
 end_station_longitude: The longitude of the end station.
 
-Table bakeshare_station_info
+### Table bakeshare_station_info
 I selected relevant columns for analysis, removed duplicates using the DISTINCT function, and filtered the table to include only stations within the 3rd region (San Francisco).
 
 SELECT 
@@ -106,7 +104,7 @@ ON trips.start_station_id = stations.station_id
 
 I confirmed that the number of rows remained consistent with the original table. Subsequently, I stored the refined table in my dataset and downloaded it to my PC.
 
-Analysis
+## Analysis
 What is the most popular type of membership?
 The company offers two subscription types:
 For Customers: 24-hour or 3-day membership,
@@ -134,22 +132,22 @@ At first glance, both graphs correlate well. It's evident that a significant por
 It appears that there are several busiest stations where the capacity doesn't align with their popularity. This mismatch could lead to stations running out of bikes due to a shortage of docking points, ultimately impacting the comfort and convenience of the service.
 Share
 All charts and dashboards can be viewed interactively in Tableau.
-Act
+## Act
 While the Subscriber membership is more profitable, a successful marketing campaign could elevate the popularity of the Customer membership, particularly among tourists and visitors to the city. In summary, to reach a broader audience for each type of members, I made the following recommendations:
-Strategic Advertising:
+### Strategic Advertising:
 Place advertisements in airports, train stations, buses to the city center, and popular tourist attractions.
 Form partnerships with local businesses, such as hotels/hostels or events, for cross-promotion and discounts for bikeshare users.
-Digital Presence:
+### Digital Presence:
 Advertise in map applications and other navigation tools.
 Leverage social media platforms to create engaging content and share user stories.
 Run social media campaigns or challenges to encourage user participation.
 Seasonal and Location-Based Marketing:
 Time the marketing campaign to coincide with warmer months and focus on the most used stations by Customers.
 Identify popular stations among Customers using the provided dashboard.
-Incentive Programs:
+### Incentive Programs:
 Introduce a points-based plan where users accumulate points based on the distance traveled, offering discounts on the next subscription or other rewards.
 Consider offering 30 minutes free for the first journey to attract new clients.
-Infrastructure Improvement:
+### Infrastructure Improvement:
 Enhance service comfort by installing more docking points at highly used stations or constructing new stations in proximity.
 
 
